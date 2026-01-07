@@ -1,0 +1,2 @@
+#pragma once
+#define MYPROJ_VERSION "@PROJECT_VERSION@"
