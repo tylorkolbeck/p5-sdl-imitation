@@ -9,7 +9,7 @@
 Canvas::Canvas(const WindowProps &props) : m_WindowProps(props) {}
 
 Canvas::~Canvas() {
-  std::cout << "cleaning up canvas" << std::endl;
+  std::cout << "removing canvas resources" << std::endl;
   if (m_Renderer)
     SDL_DestroyRenderer(m_Renderer);
   if (m_Window)
