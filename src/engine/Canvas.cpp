@@ -3,6 +3,7 @@
 #include "SDL3/SDL_events.h"
 #include "SDL3/SDL_render.h"
 #include "SDL3/SDL_timer.h"
+#include "Sketch.hpp"
 #include <SDL3/SDL.h>
 #include <iostream>
 
@@ -16,10 +17,16 @@ Canvas::~Canvas() {
     SDL_DestroyWindow(m_Window);
 }
 
-bool Canvas::Run() {
+bool Canvas::Run(Sketch &sketch) {
   if (!Init()) {
     return 1;
   }
+
+  Graphics graphics(m_Renderer);
+
+  sketch.m_Graphics = &graphics;
+
+  sketch.Setup();
 
   bool running = true;
   Uint64 last = SDL_GetTicksNS();
@@ -31,16 +38,20 @@ bool Canvas::Run() {
         running = false;
         SDL_Quit();
       }
+      sketch.OnEvent(e);
     }
 
     Uint64 now = SDL_GetTicksNS();
     float dt = (now - last) / 1'000'000'000.0f;
     last = now;
+
+    sketch.Update(dt);
     SDL_RenderClear(m_Renderer);
-    // sketch.Draw(dt);
-    std::cout << "dt: " << dt << std::endl;
+    sketch.Draw();
     SDL_RenderPresent(m_Renderer);
   }
+
+  sketch.m_Graphics = nullptr;
 
   return 0;
 }

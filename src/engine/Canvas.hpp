@@ -1,4 +1,5 @@
 #pragma once
+#include "Sketch.hpp"
 #include <SDL3/SDL.h>
 
 struct WindowProps {
@@ -13,7 +14,7 @@ public:
   ~Canvas();
   SDL_Window *Window() const { return m_Window; };
   SDL_Renderer *Renderer() const { return m_Renderer; };
-  bool Run();
+  bool Run(Sketch &sketch);
 
 private:
   bool Init();
