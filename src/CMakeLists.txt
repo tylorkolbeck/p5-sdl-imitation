@@ -1,5 +1,6 @@
 add_executable(myproj
   main.cpp
+  Canvas.cpp
 )
 
 target_link_libraries(myproj PRIVATE SDL3::SDL3)

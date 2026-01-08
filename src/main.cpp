@@ -1,5 +1,7 @@
+#include "Canvas.hpp"
 #include "SDL3/SDL_init.h"
 #include <SDL3/SDL.h>
+#include <memory>
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
@@ -59,15 +61,23 @@ void SDL_AppQuit() {
   SDL_Quit();
 }
 
-int main() {
-  SDL_AppInit();
-  while (running) {
-    SDL_Event event;
+// int main() {
+//   SDL_AppInit();
+//   while (running) {
+//     SDL_Event event;
+//
+//     while (SDL_PollEvent(&event)) {
+//       SDL_AppEvent(&event);
+//     }
+//     SDL_AppIterate();
+//   }
+//   return 0;
+// }
 
-    while (SDL_PollEvent(&event)) {
-      SDL_AppEvent(&event);
-    }
-    SDL_AppIterate();
-  }
+int main() {
+  WindowProps windowProps{800, 800, "Test Canvas"};
+  std::unique_ptr<Canvas> canvas = std::make_unique<Canvas>(windowProps);
+  canvas->Run();
+
   return 0;
 }
