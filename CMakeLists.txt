@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(MyProj
   VERSION 0.1.0
-  LANGUAGES CXX
+  LANGUAGES C CXX
 )
 
 # --- global defaults ---

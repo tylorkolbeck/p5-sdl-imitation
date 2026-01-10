@@ -1,3 +1,9 @@
 [submodule "extern/SDL"]
 	path = extern/SDL
 	url = git@github.com:libsdl-org/SDL.git
+[submodule "SDL3_gfx"]
+	path = SDL3_gfx
+	url = https://github.com/sabdul-khabir/SDL3_gfx.git
+[submodule "extern/SDL3_gfx"]
+	path = extern/SDL3_gfx
+	url = https://github.com/sabdul-khabir/SDL3_gfx.git
