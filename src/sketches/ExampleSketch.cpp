@@ -12,6 +12,7 @@ void ExampleSketch::Draw() {
   Background(25, 20, 50, 255);
   Stroke(255, 255, 0, 255);
   Circle(200, 200, 100);
+  Stroke(255, 0, 0);
   Rect(500, 500, 100);
   Line(0, 0, 100, 100);
 }
