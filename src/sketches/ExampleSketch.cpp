@@ -1,5 +1,4 @@
 #include "sketches/ExampleSketch.hpp"
-#include <SDL3/SDL.h>
 
 void ExampleSketch::Setup() {
   // run once
@@ -10,9 +9,11 @@ void ExampleSketch::Update(float dt) {
 }
 
 void ExampleSketch::Draw() {
-  Background(255, 0, 0, 255);
-
-  Clear();
+  Background(25, 20, 50, 255);
+  Stroke(255, 255, 0, 255);
+  Circle(200, 200, 100);
+  Rect(500, 500, 100);
+  Line(0, 0, 100, 100);
 }
 
 void ExampleSketch::OnEvent(const SDL_Event &e) {

@@ -58,7 +58,7 @@ bool Canvas::Run(Sketch &sketch) {
 
 bool Canvas::Init() {
   SDL_SetAppMetadata(m_WindowProps.Title, "1.0", m_WindowProps.Title);
-
+  SDL_SetRenderDrawBlendMode(m_Renderer, SDL_BLENDMODE_BLEND);
   if (!SDL_Init(SDL_INIT_VIDEO)) {
     SDL_Log("Could not initialize SDL: %s", SDL_GetError());
     return false;
