@@ -1,4 +1,5 @@
 #pragma once
+#include "Rand.hpp"
 #include "engine/Graphics.hpp"
 #include <SDL3/SDL.h>
 
@@ -41,6 +42,14 @@ public:
   void Rect(float x, float y, float width) {
     m_Graphics->Rect(x, y, width, width);
   }
+
+  int Rand(int min, int max) { return util::random::rand_int(min, max); }
+  int Rand(int max) { return util::random::rand_int(max); }
+  double Rand(double min, double max) {
+    return util::random::rand_real(min, max);
+  }
+  double Rand(double max) { return util::random::rand_real(max); }
+  void RandomSeed(std::uint64_t seed) { util::random::seed(seed); }
 
 protected:
   Graphics &G() { return *m_Graphics; };

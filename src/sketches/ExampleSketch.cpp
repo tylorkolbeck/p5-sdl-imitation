@@ -2,6 +2,7 @@
 
 void ExampleSketch::Setup() {
   // run once
+  RandomSeed(100);
 }
 
 void ExampleSketch::Update(float dt) {

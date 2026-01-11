@@ -1,6 +1,7 @@
 add_executable(myproj
   main.cpp
   engine/Canvas.cpp
+  engine/Rand.cpp
   sketches/ExampleSketch.cpp
 )
 
