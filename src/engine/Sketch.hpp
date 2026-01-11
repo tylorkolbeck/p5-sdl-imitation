@@ -1,6 +1,6 @@
 #pragma once
-#include "Rand.hpp"
 #include "engine/Graphics.hpp"
+#include "util/Rand.hpp"
 #include <SDL3/SDL.h>
 
 class Sketch {
