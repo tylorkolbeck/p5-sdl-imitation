@@ -1,9 +1,11 @@
-add_executable(myproj
+
+file(GLOB_RECURSE APP_SOURCES
+  engine/*.cpp
+  sketches/**/*.cpp
   main.cpp
-  engine/Canvas.cpp
-  engine/util/Rand.cpp
-  sketches/ExampleSketch.cpp
 )
+
+add_executable(myproj ${APP_SOURCES})
 
 target_link_libraries(myproj PRIVATE SDL3::SDL3)
 

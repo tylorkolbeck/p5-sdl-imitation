@@ -1,5 +1,5 @@
 #include "engine/Canvas.hpp"
-#include "sketches/ExampleSketch.hpp"
+#include "sketches/example/ExampleSketch.hpp"
 #include <SDL3/SDL.h>
 #include <memory>
 

@@ -1,9 +1,9 @@
-#include "sketches/ExampleSketch.hpp"
+#include "sketches/example/ExampleSketch.hpp"
 
 void ExampleSketch::Setup() {
   // run once
   RandomSeed(100);
-  PointSize(6);
+  PointSize(2);
 }
 
 void ExampleSketch::Update(float dt) {
@@ -13,7 +13,7 @@ void ExampleSketch::Update(float dt) {
 void ExampleSketch::Draw() {
   Background(25, 20, 50, 255);
   Stroke(255, 0, 0);
-  StrokeWeight(20);
+  StrokeWeight(2);
   Circle(Width() / 2, Height() / 2, 100);
   Rect(500, 500, 100);
 
