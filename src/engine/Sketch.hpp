@@ -65,6 +65,7 @@ public:
 
 protected:
   Graphics &G() { return *m_Graphics; };
+  Graphics &p5() { return *m_Graphics; };
 
 private:
   friend class Canvas;

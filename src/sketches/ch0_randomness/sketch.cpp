@@ -14,6 +14,8 @@ void RandomnessSketch::Update(float dt) {
 
 void RandomnessSketch::Draw() {
   Background(50, 50, 50);
+  p5().Fill(255, 0, 0);
+  p5().Stroke(255, 0, 0);
   for (auto const &e : m_Entities) {
     e->Render(G());
   }
