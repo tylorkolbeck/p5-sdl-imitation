@@ -2,6 +2,7 @@
 #include "SDL3_gfxPrimitives.h"
 #include <SDL3/SDL.h>
 #include <cmath>
+#include <iostream>
 
 const float PI = 3.14159265358979323846264338327950288419716939937510f;
 
@@ -48,7 +49,19 @@ public:
     Line(x, y + height, x, y);
   }
 
+  int Width() { return m_Width; }
+
+  int Height() { return m_Height; }
+
 private:
+  friend class Canvas;
+  void SetSize(int w, int h) {
+    std::cout << "NEW SIZE: " << w << " " << h << std::endl;
+    m_Width = w;
+    m_Height = h;
+  }
   struct Color m_CurrentColor;
   SDL_Renderer *m_Renderer;
+  int m_Width = 1;
+  int m_Height = 1;
 };

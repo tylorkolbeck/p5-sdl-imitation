@@ -5,6 +5,7 @@
 struct WindowProps {
   int Width;
   int Height;
+  const char *AppVersion;
   const char *Title;
 };
 
@@ -18,7 +19,10 @@ public:
 
 private:
   bool Init();
-  WindowProps m_WindowProps;
   SDL_Window *m_Window;
   SDL_Renderer *m_Renderer;
+  int m_Width;
+  int m_Height;
+  const char *m_AppVersion;
+  const char *m_Title;
 };

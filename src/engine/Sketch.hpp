@@ -35,6 +35,8 @@ public:
     m_Graphics->Circle(x, y, radius);
   }
 
+  void Circle(int x, int y, float radius) { m_Graphics->Circle(x, y, radius); }
+
   void Rect(float x, float y, float width, float height) {
     m_Graphics->Rect(x, y, width, height);
   }
@@ -50,6 +52,10 @@ public:
   }
   double Rand(double max) { return util::random::rand_real(max); }
   void RandomSeed(std::uint64_t seed) { util::random::seed(seed); }
+
+  int Width() { return m_Graphics->Width(); }
+
+  int Height() { return m_Graphics->Height(); }
 
 protected:
   Graphics &G() { return *m_Graphics; };
