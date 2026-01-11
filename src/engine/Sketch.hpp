@@ -27,6 +27,8 @@ public:
     m_Graphics->Color(r, g, b, a);
   }
 
+  void StrokeWeight(int weight) { m_Graphics->StrokeWeight(weight); }
+
   void Clear(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) {
     m_Graphics->Clear(r, g, b, a);
   }
@@ -34,6 +36,8 @@ public:
   void Circle(float x, float y, float radius) {
     m_Graphics->Circle(x, y, radius);
   }
+
+  void PointSize(int value) { m_Graphics->PointSize(value); }
 
   void Circle(int x, int y, float radius) { m_Graphics->Circle(x, y, radius); }
 
@@ -44,6 +48,8 @@ public:
   void Rect(float x, float y, float width) {
     m_Graphics->Rect(x, y, width, width);
   }
+
+  void Point(float x, float y) { m_Graphics->Point(x, y); }
 
   int Rand(int min, int max) { return util::random::rand_int(min, max); }
   int Rand(int max) { return util::random::rand_int(max); }
