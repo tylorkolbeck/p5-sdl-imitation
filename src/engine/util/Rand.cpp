@@ -3,6 +3,7 @@
 #include <chrono>
 #include <cstdint>
 #include <limits>
+#include <random>
 #include <stdexcept>
 
 namespace util::random {
@@ -31,7 +32,14 @@ void seed(std::uint64_t value) noexcept {
   g_state = (value == 0) ? DEFAULT_SEED : value;
 }
 
-void seed() noexcept { g_state = current_milli(); }
+void seed() noexcept {
+  std::random_device rd;
+
+  std::uint64_t s = (static_cast<std::uint64_t>(rd()) << 32) ^
+                    static_cast<std::uint64_t>(rd());
+
+  seed(s);
+}
 
 int rand_int(int max) {
   if (max < 0) {

@@ -61,7 +61,6 @@ bool Canvas::Run(Sketch &sketch) {
     last = now;
 
     sketch.Update(dt);
-    SDL_RenderClear(m_Renderer);
     sketch.Draw();
     SDL_RenderPresent(m_Renderer);
   }
@@ -73,7 +72,6 @@ bool Canvas::Run(Sketch &sketch) {
 
 bool Canvas::Init() {
   SDL_SetAppMetadata(m_Title, m_AppVersion, m_Title);
-  SDL_SetRenderDrawBlendMode(m_Renderer, SDL_BLENDMODE_BLEND);
   if (!SDL_Init(SDL_INIT_VIDEO)) {
     SDL_Log("Could not initialize SDL: %s", SDL_GetError());
     return false;
@@ -86,6 +84,7 @@ bool Canvas::Init() {
     return false;
   }
 
+  SDL_SetRenderDrawBlendMode(m_Renderer, SDL_BLENDMODE_BLEND);
   SDL_GetCurrentRenderOutputSize(m_Renderer, &m_Width, &m_Height);
 
   return true;

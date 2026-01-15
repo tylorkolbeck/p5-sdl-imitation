@@ -29,10 +29,6 @@ public:
 
   void StrokeWeight(int weight) { m_Graphics->StrokeWeight(weight); }
 
-  void Clear(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) {
-    m_Graphics->Clear(r, g, b, a);
-  }
-
   void Circle(float x, float y, float radius) {
     m_Graphics->Circle(x, y, radius);
   }

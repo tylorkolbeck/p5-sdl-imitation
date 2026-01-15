@@ -32,7 +32,7 @@ double rand_real(double max);
 void seed(std::uint64_t value) noexcept;
 
 // calling seed with no parameters will seed the RNG
-// with current time in milliseoncds
+// with current time in milliseconds
 void seed() noexcept;
 
 uint64_t current_milli();

@@ -15,7 +15,13 @@ public:
   explicit Graphics(SDL_Renderer *renderer) : m_Renderer(renderer) {}
 
   void Background(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) {
-    Clear(r, g, b, a);
+    SDL_SetRenderDrawColor(m_Renderer, r, g, b, a);
+
+    if (a == 255) {
+      SDL_RenderClear(m_Renderer); // wipe
+    } else {
+      SDL_RenderFillRect(m_Renderer, nullptr); // fade overlay
+    }
   }
 
   void Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) {
@@ -26,11 +32,6 @@ public:
   void Fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) {
     m_FillColor = {r, g, b, a};
     m_HasFill = true;
-  }
-
-  void Clear(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) {
-    SDL_SetRenderDrawColor(m_Renderer, r, g, b, a);
-    SDL_RenderClear(m_Renderer);
   }
 
   static inline float SnapToHalfPixel(float v) { return std::floor(v) + 0.5f; }
