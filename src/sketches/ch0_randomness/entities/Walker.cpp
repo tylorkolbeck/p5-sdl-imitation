@@ -1,16 +1,24 @@
 #include "Walker.hpp"
 #include "engine/Graphics.hpp"
+#include "engine/util/Rand.hpp"
+#include <cmath>
 
-Walker::Walker(float x, float y) : m_X(x), m_Y(y) {}
-Walker::Walker() : m_X(0), m_Y(0) {}
+Vec GRAVITY{0.0f, 9.8f};
 
-void Walker::Update(float dt) {}
+Walker::Walker(Vec pos) : Entity(pos) {}
+Walker::Walker() : Entity(Vec{}) {}
 
-void Walker::AddX(float value) { m_X += value; }
+void Walker::Update(float dt) {
+  ApplyForce(GRAVITY);
 
-void Walker::AddY(float value) { m_Y += value; }
+  m_Velocity += m_Acceleration * dt;
+  m_Velocity.Limit(m_MaxSpeed);
+  m_Pos += m_Velocity * dt;
+
+  m_Acceleration = {0.0f, 0.0f, 0.0f};
+}
 
 void Walker::Render(Graphics &g) const {
   g.PointSize(6);
-  g.Point(m_X, m_Y);
+  g.Point(m_Pos.x, m_Pos.y);
 }

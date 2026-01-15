@@ -1,11 +1,13 @@
 #pragma once
-#include "Position.hpp"
 
 #include "SDL3/SDL_events.h"
+#include "engine/util/Vec.hpp"
 class Graphics;
 
 class Entity {
 public:
+  Entity() = default;
+  Entity(Vec pos) : m_Pos(pos) {};
   virtual ~Entity() = default;
   virtual void Setup() {}
   virtual void Update(float dt) = 0;
@@ -16,10 +18,12 @@ public:
   };
 
   virtual void OnEvent(const SDL_Event &) {}
+  virtual void ApplyForce(Vec force) { m_Acceleration += force; }
 
-  virtual void AddX(float) {};
-  virtual void AddY(float) {};
+protected:
+  Vec m_Pos{};
+  Vec m_Acceleration{};
+  Vec m_Velocity{};
 
 private:
-  Position m_Pos{0.0f, 0.0f};
 };

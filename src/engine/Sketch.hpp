@@ -60,7 +60,6 @@ public:
   int Height() { return m_Graphics->Height(); }
 
 protected:
-  Graphics &G() { return *m_Graphics; };
   Graphics &p5() { return *m_Graphics; };
 
 private:
