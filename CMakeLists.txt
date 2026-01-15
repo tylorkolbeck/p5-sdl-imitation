@@ -20,6 +20,7 @@ include(options)
 include(warnings)
 
 add_subdirectory(extern/SDL)
+add_subdirectory(${CMAKE_SOURCE_DIR}/extern/glm)
 
 # Generate a version header (optional but nice)
 configure_file(
@@ -36,3 +37,4 @@ if(MYPROJ_BUILD_TESTS)
   enable_testing()
   add_subdirectory(tests)
 endif()
+target_link_libraries(myproj PRIVATE glm::glm)

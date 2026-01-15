@@ -7,3 +7,6 @@
 [submodule "extern/SDL3_gfx"]
 	path = extern/SDL3_gfx
 	url = https://github.com/sabdul-khabir/SDL3_gfx.git
+[submodule "extern/glm"]
+	path = extern/glm
+	url = git@github.com:g-truc/glm.git

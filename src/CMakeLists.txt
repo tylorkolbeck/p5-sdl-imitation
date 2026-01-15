@@ -1,4 +1,3 @@
-
 file(GLOB_RECURSE APP_SOURCES
   engine/*.cpp
   sketches/**/*.cpp
