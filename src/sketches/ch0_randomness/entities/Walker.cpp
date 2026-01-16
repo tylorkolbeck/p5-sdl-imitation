@@ -2,13 +2,10 @@
 #include "engine/Graphics.hpp"
 #include <cmath>
 
-Vec GRAVITY{0.0f, 9.8f};
-
 Walker::Walker(Vec pos) : Entity(pos) {}
 Walker::Walker() : Entity(Vec{}) {}
 
 void Walker::Update(float dt) {
-  ApplyForce(GRAVITY);
   m_Velocity += m_Acceleration * dt;
   m_Velocity.Limit(m_MaxSpeed);
   m_Pos += m_Velocity * dt;

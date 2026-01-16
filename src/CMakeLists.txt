@@ -39,7 +39,8 @@ set_target_properties(myproj PROPERTIES
 target_include_directories(myproj
   PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}
-    "${CMAKE_CURRENT_BINARY_DIR}/../generated"  # version header output
+  "${CMAKE_CURRENT_BINARY_DIR}/../generated"  # version header output
+  "${CMAKE_CURRENT_SOURCE_DIR}/extern/PerlinNoise"
 )
 
 target_link_libraries(myproj PRIVATE sdl3_gfx)

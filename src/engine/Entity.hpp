@@ -17,6 +17,11 @@ public:
     m_Pos.y = y;
   };
 
+  const Vec &Pos() const { return m_Pos; }
+  Vec &Pos() { return m_Pos; };
+  const Vec &Velocity() const { return m_Velocity; }
+  Vec &Vel() { return m_Velocity; }
+
   virtual void OnEvent(const SDL_Event &) {}
   virtual void ApplyForce(Vec force) { m_Acceleration += force; }
 
