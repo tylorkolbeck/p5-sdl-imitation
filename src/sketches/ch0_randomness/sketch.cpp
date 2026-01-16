@@ -12,24 +12,19 @@ void RandomnessSketch::Setup() {
   util::random::seed();
   for (int i = 0; i < num_entities; ++i) {
     auto w = std::make_unique<Walker>(
-        Vec{(float)rand_real(0, Width()), (float)rand_real(0, Height())});
-    w->Vel() = Vec{(float)rand_int(0, 50), (float)rand_int(0, 50)};
-    m_Entities.push_back(std::move(w));
+        Vec{static_cast<float>((float)Width() / 2.0),
+            static_cast<float>((float)Height() / 2.0)});
 
-    // m_Entities.push_back(std::make_unique<Walker>(
-    //     Vec{(float)util::random::rand_real(0, Width()),
-    //         (float)util::random::rand_real(0, Height())}));
+    m_Entities.push_back(std::move(w));
   }
 }
 
 void KeepInBounds(Vec &pos, Vec &vel, int width, int height) {
   if (pos.x > width || pos.x < 0) {
-    pos.x *= -1;
     vel.x *= -1;
   }
 
   if (pos.y > height || pos.y < 0) {
-    pos.y *= -1;
     vel.y *= -1;
   }
 }

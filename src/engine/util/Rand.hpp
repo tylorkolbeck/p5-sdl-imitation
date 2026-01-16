@@ -28,6 +28,8 @@ double rand_real(double min, double max);
 
 double rand_real(double max);
 
+float rand(float min, float max);
+
 // Affects the RNG for the current thread only - thread safe
 void seed(std::uint64_t value) noexcept;
 

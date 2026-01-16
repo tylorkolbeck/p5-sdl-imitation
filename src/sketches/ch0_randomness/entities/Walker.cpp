@@ -1,6 +1,9 @@
 #include "Walker.hpp"
 #include "engine/Graphics.hpp"
+#include "engine/util/Rand.hpp"
 #include <cmath>
+
+using namespace util::random;
 
 Walker::Walker(Vec pos) : Entity(pos) {}
 Walker::Walker() : Entity(Vec{}) {}
@@ -16,4 +19,5 @@ void Walker::Update(float dt) {
 void Walker::Render(Graphics &g) const {
   g.PointSize(6);
   g.Point(m_Pos.x, m_Pos.y);
+  float mag = Mag(m_Pos);
 }

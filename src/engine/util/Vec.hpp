@@ -50,5 +50,8 @@ struct Vec {
       *this *= scale;
     }
   }
+
   float LengthSq() const { return x * x + y * y + z * z; }
 };
+
+inline float Mag(const Vec &vec) { return sqrt(vec.LengthSq()); }

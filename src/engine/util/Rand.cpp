@@ -89,6 +89,8 @@ double rand_real(double min, double max) {
   return min + static_cast<double>(unit * (max - min));
 }
 
+float rand(float min, float max) { return (float)rand_real(min, max); }
+
 double rand_real(double max) {
   if (max <= 0) {
     throw std::invalid_argument("rand_int: max must be >= 0");

@@ -21,7 +21,7 @@ public:
   Vec &Pos() { return m_Pos; };
   const Vec &Velocity() const { return m_Velocity; }
   Vec &Vel() { return m_Velocity; }
-
+  float &MaxSpeed() { return m_MaxSpeed; }
   virtual void OnEvent(const SDL_Event &) {}
   virtual void ApplyForce(Vec force) { m_Acceleration += force; }
 
@@ -29,6 +29,7 @@ protected:
   Vec m_Pos{};
   Vec m_Acceleration{};
   Vec m_Velocity{};
+  float m_MaxSpeed = 50;
 
 private:
 };
