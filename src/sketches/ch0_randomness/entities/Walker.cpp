@@ -19,5 +19,4 @@ void Walker::Update(float dt) {
 void Walker::Render(Graphics &g) const {
   g.PointSize(6);
   g.Point(m_Pos.x, m_Pos.y);
-  float mag = Mag(m_Pos);
 }

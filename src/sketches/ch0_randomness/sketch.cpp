@@ -1,6 +1,7 @@
 #include "sketch.hpp"
 #include "engine/util/Rand.hpp"
 #include "sketches/ch0_randomness/entities/Walker.hpp"
+#include <iostream>
 #include <memory>
 
 using namespace util::random;
@@ -31,6 +32,20 @@ void KeepInBounds(Vec &pos, Vec &vel, int width, int height) {
 
 void RandomnessSketch::Update(float dt) {
   for (auto const &e : m_Entities) {
+    Vec dir = Vec{0.0f, 0.0f};
+    if (keys.RIGHT)
+      dir.x += 1.0f;
+    if (keys.LEFT)
+      dir.x -= 1.0f;
+    if (keys.UP)
+      dir.y -= 1.0f;
+    if (keys.DOWN)
+      dir.y += 1.0f;
+
+    // if (dir.Normalize() > 0) {
+    //   e->ApplyForce(dir);
+    // }
+
     // e->AddX(40 * dt);
     e->Update(dt);
     KeepInBounds(e->Pos(), e->Vel(), p5().Width(), p5().Height());
@@ -45,5 +60,3 @@ void RandomnessSketch::Draw() {
     e->Render(p5());
   }
 }
-
-void RandomnessSketch::OnEvent(const SDL_Event &e) {}

@@ -3,13 +3,61 @@
 #include "util/Rand.hpp"
 #include <SDL3/SDL.h>
 
+struct InputState {
+  bool LEFT = 0;
+  bool RIGHT = 0;
+  bool UP = 0;
+  bool DOWN = 0;
+};
+
 class Sketch {
+public:
+  InputState keys;
+
 public:
   virtual ~Sketch() = default;
   virtual void Setup() {};
   virtual void Update(float dt) { (void)dt; };
   virtual void Draw() = 0;
-  virtual void OnEvent(const SDL_Event &e) { (void)e; };
+  virtual void OnEvent(const SDL_Event &e) {
+    if (e.type == SDL_EVENT_KEY_DOWN) {
+      switch (e.key.scancode) {
+      case SDL_SCANCODE_W:
+        keys.UP = 1;
+        break;
+      case SDL_SCANCODE_D:
+        keys.RIGHT = 1;
+        break;
+      case SDL_SCANCODE_S:
+        keys.DOWN = 1;
+        break;
+      case SDL_SCANCODE_A:
+        keys.LEFT = 1;
+        break;
+      default:
+        break;
+      }
+    }
+
+    if (e.type == SDL_EVENT_KEY_UP) {
+      switch (e.key.scancode) {
+      case SDL_SCANCODE_W:
+        keys.UP = 0;
+        break;
+      case SDL_SCANCODE_D:
+        keys.RIGHT = 0;
+        break;
+      case SDL_SCANCODE_S:
+        keys.DOWN = 0;
+        break;
+      case SDL_SCANCODE_A:
+        keys.LEFT = 0;
+        break;
+      default:
+        break;
+      }
+    }
+  };
 
   void Background(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) {
     m_Graphics->Background(r, g, b, a);
